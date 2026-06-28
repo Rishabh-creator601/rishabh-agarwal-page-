@@ -1,0 +1,53 @@
+
+Name : rishabh agarwal 
+education :  Delhi Technological Universty , Civil engineering  , Btech 
+
+
+
+
+SKILLS 
+Languages: Python, JavaScript, HTML/CSS, Java(Basic) ,C/C++ (Intermediate)
+ML/DL Frameworks: TensorFlow, Keras,Scikit-learn
+Computer Vision: OpenCV, YOLOv11, MediaPipe,DeepFace,FaceNet
+MLOPS : FastAPI,Pydantic
+NLP: spaCy, NLTK, HuggingFace Transformers,genism
+Web Tools: Streamlit, Flask
+Tools & Platforms: Git, Colab, Jupyter, VS Code, Obsidian,kaggle
+AI Tools: Gemini , Claude 
+
+
+github :  https://github.com/Rishabh-creator601
+kaggle :  https://www.kaggle.com/rishabh2007/code?orderBy=dateUpdated
+medium writing :  https://medium.com/@rashesh369
+linkedin profile :  https://www.linkedin.com/in/rishabh-agarwal-251373418/
+
+
+ ML roadmaps 
+
+ 1) https://medium.com/h7w/roadmap-that-made-me-expert-in-aiml-in-just-4-months-c87bd191ead9?sharedUserId=rashesh369
+
+ 2) https://medium.com/h7w/a-practical-ai-ml-roadmap-that-took-me-from-beginner-to-professional-in-30-days-1c48ce8ebeca?sharedUserId=rashesh369
+
+
+
+ Projects  {video in VIDEOs folder }
+
+ 1)  Mask count [video,code]
+     code : https://github.com/Rishabh-creator601/Portfolio_projects/tree/master/mask_count_streamlit
+     video :  mask count.mp4 
+
+ 2)  food calorie detection [video,code]
+
+    code :   https://github.com/Rishabh-creator601/Portfolio_projects/tree/master/food_calorie_cnn
+    video :  Junk Food.mp4 
+
+
+3)  Flower Yolo [video,code]
+    code : https://github.com/Rishabh-creator601/Portfolio_projects/tree/master/flower_fiv_yolo
+    video :  flower detection.gif
+
+
+4)  transformer based summarize [video,code]
+    code :  https://github.com/Rishabh-creator601/Portfolio_projects/tree/master/transformer_summarizer_documentqa
+    video :  transformer tools.mp4
+
