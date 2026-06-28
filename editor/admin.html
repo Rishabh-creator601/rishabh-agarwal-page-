@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Site Editor — Rishabh Agarwal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="editor.css" />
+</head>
+<body>
+<header>
+  <div class="bar">
+    <h1><span class="dot"></span>SITE EDITOR <span class="sub">· edits data.js</span></h1>
+    <div class="right">
+      <button class="btn" id="reload">Reload</button>
+      <button class="btn" id="download">Download</button>
+      <button class="btn primary" id="save">Save to site ✓</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="intro">
+    Edit everything below — no code. Upload videos with <b>Browse</b>; they save straight into <code>assets/videos/</code>.
+    When you're happy, click <b>Save to site</b> to write <code>data.js</code>, then <b>commit &amp; push</b> to GitHub so Vercel redeploys.
+    <ol>
+      <li><b>Save to site</b> — writes your changes into <code>data.js</code> (needs this editor opened via <code>open-editor.bat</code>).</li>
+      <li>In GitHub Desktop / git: <b>commit &amp; push</b> your changes.</li>
+      <li>Vercel redeploys automatically (~20s).</li>
+    </ol>
+  </div>
+
+  <section id="sec-projects"></section>
+  <section id="sec-skills"></section>
+  <section id="sec-roadmaps"></section>
+  <section id="sec-meta"></section>
+  <section id="sec-links"></section>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="/data.js"></script>
+<script src="editor.js"></script>
+</body>
+</html>
