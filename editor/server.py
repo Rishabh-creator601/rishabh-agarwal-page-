@@ -14,6 +14,8 @@ import http.server
 import os
 import re
 import json
+import base64
+import hmac
 import threading
 import time
 import webbrowser
@@ -23,6 +25,29 @@ EDITOR_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(EDITOR_DIR, ".."))   # the site/content folder
 PORT = 8799
 ALLOWED_FOLDERS = {"videos": "assets/videos", "projects": "assets/projects"}
+
+
+def load_env():
+    """Read KEY=VALUE pairs from the project-root .env file (local only)."""
+    creds = {}
+    envp = os.path.join(ROOT, ".env")
+    if os.path.isfile(envp):
+        with open(envp, encoding="utf-8") as fh:
+            for line in fh:
+                line = line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                k, v = line.split("=", 1)
+                creds[k.strip()] = v.strip()
+    return creds
+
+
+_ENV = load_env()
+# NOTE: we read from the .env FILE (not process env) because on Windows the
+# USERNAME variable is reserved by the OS and would shadow our editor login.
+AUTH_USER = _ENV.get("USERNAME")
+AUTH_PASS = _ENV.get("PASSWORD")
+AUTH_ON = bool(AUTH_USER and AUTH_PASS)
 
 
 def sanitize(name):
@@ -62,6 +87,33 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def log_message(self, fmt, *args):
         pass  # keep the console quiet
 
+    # ---- login gate (HTTP Basic Auth) for /editor and /api ----
+    @staticmethod
+    def _is_protected(path):
+        p = urllib.parse.urlparse(path).path
+        return p.startswith("/editor") or p.startswith("/api")
+
+    def _check_auth(self):
+        if not AUTH_ON:
+            return True
+        hdr = self.headers.get("Authorization", "")
+        if hdr.startswith("Basic "):
+            try:
+                u, _, p = base64.b64decode(hdr[6:]).decode("utf-8").partition(":")
+                if hmac.compare_digest(u, AUTH_USER) and hmac.compare_digest(p, AUTH_PASS):
+                    return True
+            except Exception:
+                pass
+        body = b"Authentication required."
+        self.send_response(401)
+        self.send_header("WWW-Authenticate", 'Basic realm="Site Editor"')
+        self.send_header("Content-Type", "text/plain")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        if self.command != "HEAD":
+            self.wfile.write(body)
+        return False
+
     def end_headers(self):
         self.send_header("Accept-Ranges", "bytes")
         self.send_header("Cache-Control", "no-store")
@@ -69,6 +121,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     # ---- GET with Range support (so video previews work) ----
     def send_head(self):
+        if self._is_protected(self.path) and not self._check_auth():
+            return None
         path = self.translate_path(self.path)
         if not os.path.isfile(path):
             return super().send_head()
@@ -103,6 +157,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     # ---- API: upload a file / save data.js ----
     def do_POST(self):
+        if not self._check_auth():
+            return
         parsed = urllib.parse.urlparse(self.path)
         length = int(self.headers.get("Content-Length", 0))
         body = self.rfile.read(length) if length else b""
@@ -153,6 +209,10 @@ def main():
     print("  Editor : http://127.0.0.1:%d/editor/admin.html" % PORT)
     print("  Preview: http://127.0.0.1:%d/index.html" % PORT)
     print("  Editing folder: %s" % ROOT)
+    if AUTH_ON:
+        print("  Login  : ON  (user: %s)  -- from .env" % AUTH_USER)
+    else:
+        print("  Login  : OFF (no USERNAME/PASSWORD in .env)")
     print("-" * 52)
     print("  Keep this window OPEN while editing.")
     print("  Close it (or press Ctrl+C) when you're done.")

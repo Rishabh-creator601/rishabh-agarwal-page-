@@ -2,3 +2,10 @@
 .claude/
 .claude/commands.md
 .claude/settings.local.json
+
+# Secrets — never commit
+.env
+
+# Python cache from the local editor server
+__pycache__/
+*.pyc
