@@ -73,7 +73,7 @@ window.SITE = {
         "text blob",
         "streamlit"
       ],
-      "video": "assets\\videos\\multi model.gif ",
+      "video": "assets/videos/multi-model.gif",
       "code": "https://github.com/Rishabh-creator601/Multi-Model-Sentiment-Analysis",
       "codeLabel": "View code"
     }
@@ -91,18 +91,18 @@ window.SITE = {
           "icon": "javascript"
         },
         {
-          "name": "C / C++",
-          "icon": "cplusplus",
-          "mono": "C++"
-        },
-        {
           "name": "HTML / CSS",
           "icon": "html5"
         },
         {
-          "name": "Java",
+          "name": "Java (basic)",
           "icon": "",
           "mono": "JV"
+        },
+        {
+          "name": "C / C++ (intermediate)",
+          "icon": "cplusplus",
+          "mono": "C++"
         }
       ]
     },
@@ -120,6 +120,54 @@ window.SITE = {
         {
           "name": "Scikit-learn",
           "icon": "scikitlearn"
+        }
+      ]
+    },
+    {
+      "group": "Agentic Coding",
+      "items": [
+        {
+          "name": "Claude Code",
+          "icon": "claude"
+        },
+        {
+          "name": "Custom commands",
+          "icon": "",
+          "mono": "/"
+        },
+        {
+          "name": "Skills",
+          "icon": "",
+          "mono": "SK"
+        },
+        {
+          "name": "Plugins",
+          "icon": "",
+          "mono": "PL"
+        },
+        {
+          "name": "Hooks",
+          "icon": "",
+          "mono": "HK"
+        },
+        {
+          "name": "SDD",
+          "icon": "",
+          "mono": "SDD"
+        }
+      ]
+    },
+    {
+      "group": "Gen AI",
+      "items": [
+        {
+          "name": "LangChain",
+          "icon": "langchain"
+        },
+        {
+          "name": "RAG applications",
+          "icon": "",
+          "mono": "RAG"
         }
       ]
     },
@@ -152,6 +200,29 @@ window.SITE = {
       ]
     },
     {
+      "group": "MLOps",
+      "items": [
+        {
+          "name": "FastAPI",
+          "icon": "fastapi"
+        },
+        {
+          "name": "Pydantic",
+          "icon": "pydantic"
+        }
+      ]
+    },
+    {
+      "group": "Databases",
+      "items": [
+        {
+          "name": "SQL (basic)",
+          "icon": "",
+          "mono": "SQL"
+        }
+      ]
+    },
+    {
       "group": "NLP",
       "items": [
         {
@@ -175,20 +246,7 @@ window.SITE = {
       ]
     },
     {
-      "group": "MLOps & APIs",
-      "items": [
-        {
-          "name": "FastAPI",
-          "icon": "fastapi"
-        },
-        {
-          "name": "Pydantic",
-          "icon": "pydantic"
-        }
-      ]
-    },
-    {
-      "group": "Web & Deploy",
+      "group": "Web Tools",
       "items": [
         {
           "name": "Streamlit",
@@ -197,14 +255,6 @@ window.SITE = {
         {
           "name": "Flask",
           "icon": "flask"
-        },
-        {
-          "name": "Next.js",
-          "icon": "nextdotjs"
-        },
-        {
-          "name": "Vercel",
-          "icon": "vercel"
         }
       ]
     },
@@ -229,30 +279,30 @@ window.SITE = {
           "mono": "VS"
         },
         {
-          "name": "Kaggle",
-          "icon": "kaggle"
-        },
-        {
           "name": "Obsidian",
           "icon": "obsidian"
         },
         {
-          "name": "medium",
-          "icon": "medium",
-          "mono": ""
+          "name": "Kaggle",
+          "icon": "kaggle"
         }
       ]
     },
     {
-      "group": "AI Copilots",
+      "group": "AI Tools",
       "items": [
+        {
+          "name": "Google Gemini",
+          "icon": "googlegemini"
+        },
         {
           "name": "Claude",
           "icon": "claude"
         },
         {
-          "name": "Google Gemini",
-          "icon": "googlegemini"
+          "name": "ChatGPT",
+          "icon": "",
+          "mono": "GPT"
         }
       ]
     }
